@@ -5,7 +5,6 @@ import { BsFillEnvelopeOpenHeartFill } from "react-icons/bs";
 function Intro({ close, setClose }) {
   const closeIntro = useCallback(() => {
     setClose(true);
-    console.log("first");
   }, [setClose]);
   useEffect(()=>{
     if(!close){

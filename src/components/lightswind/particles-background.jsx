@@ -1,22 +1,6 @@
-import React, { useLayoutEffect } from 'react';
+import { useLayoutEffect } from 'react';
 
-declare global {
-  interface Window {
-    particlesJS: any;
-  }
-}
-
-interface ParticlesBackgroundProps {
-  colors?: string[];
-  size?: number;
-  countDesktop?: number;
-  countTablet?: number;
-  countMobile?: number;
-  zIndex?: number;
-  height?: string;
-}
-
-const ParticlesBackground: React.FC<ParticlesBackgroundProps> = ({
+const ParticlesBackground = ({
   colors = ['#ff223e', '#5d1eb2', '#ff7300'],
   size = 3,
   countDesktop = 60,

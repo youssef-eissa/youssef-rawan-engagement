@@ -7,11 +7,12 @@ import tailwindcss from "@tailwindcss/vite";
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/youssef-rawan-engagement/' : '/',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
 plugins: [react(), tailwindcss()],
-});
+}));
