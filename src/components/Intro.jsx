@@ -24,7 +24,8 @@ function Intro({ close, setClose }) {
         <motion.div
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
           exit={{ y: "-100%", scale: 1.05 ,opacity:0}}
-          className="absolute top-0 left-0 z-50 h-screen w-screen flex items-center justify-between py-10 bg-center bg-cover  bg-[url('/main.jpeg')] flex-col gap-10 overflow-hidden"
+          className="absolute top-0 left-0 z-50 h-dvh w-screen flex items-center justify-between py-10 bg-center bg-cover flex-col gap-10 overflow-hidden"
+          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}main.jpeg)` }}
         >
           <div className="absolute inset-0 h-full w-full bg-black/50 -z-10"></div>
           <motion.div

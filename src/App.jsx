@@ -19,7 +19,10 @@ const [close,setClose]=useState(false)
             transition={{duration:1.2}}
             className="min-h-[2000px] relative z-10 [&>section]:z-50 [&>section]:relative"
           >
-            <div className="fixed inset-0 -z-10 bg-[url('/main.webp')] bg-center bg-cover" />
+            <div
+              className="fixed inset-0 -z-10 bg-center bg-cover"
+              style={{ backgroundImage: `url(${import.meta.env.BASE_URL}main.webp)` }}
+            />
             <ParticlesBackground
               colors={["#ffd60a"]}
               size={4}

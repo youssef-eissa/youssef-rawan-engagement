@@ -18,7 +18,7 @@ function ImageSection() {
                 transition={{duration:0.5,delay:0.2}}
                 className="w-full h-fill rounded-2xl overflow-hidden"
               >
-                <img src="/main.jpeg" alt="img" className="w-full h-full" />
+                <img src={`${import.meta.env.BASE_URL}main.jpeg`} alt="img" className="w-full h-full" />
               </motion.div>
               <span className="absolute -top-55 left-1/2 -translate-x-1/2 h-50 w-1 bg-yellow-300 z-50"></span>
             </>
