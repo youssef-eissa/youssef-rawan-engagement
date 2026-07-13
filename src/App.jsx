@@ -17,7 +17,7 @@ const [close,setClose]=useState(false)
             initial={{ opacity: 0, }}
             animate={{ opacity: 1, }}
             transition={{duration:1.2}}
-            className="min-h-[2000px] relative z-10 [&>section]:z-50 [&>section]:relative"
+            className=" relative z-10 [&>section]:z-50 [&>section]:relative overflow-hidden"
           >
             <div
               className="fixed inset-0 -z-10 bg-center bg-cover"

@@ -129,7 +129,7 @@ export default function CountdownTimer({
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center text-lg font-semibold tracking-wide  sm:text-2xl text-yellow-300!"
+          className="text-center text-lg font-semibold tracking-wide  sm:text-2xl text-yellow-300! font-playwrite!"
         >
           {isDone ? "🎉 It's here!" : label}
         </motion.h1>

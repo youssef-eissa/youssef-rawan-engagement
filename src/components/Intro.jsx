@@ -9,21 +9,22 @@ function Intro({ close, setClose }) {
   useEffect(()=>{
     if(!close){
         document.documentElement.style.overflow="hidden"
-    } else {
-        document.documentElement.style.overflow = "auto";
-
     }
     return()=>{
-        document.documentElement.style.overflow = "auto";
+        document.documentElement.style.overflow = "";
 
     }
   },[close])
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => {
+        document.documentElement.style.overflow = "";
+      }}
+    >
       {!close && (
         <motion.div
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          exit={{ y: "-100%", scale: 1.05 ,opacity:0}}
+          exit={{ y: "-100%" ,opacity:0}}
           className="absolute top-0 left-0 z-50 h-dvh w-screen flex items-center justify-between py-10 bg-center bg-cover flex-col gap-10 overflow-hidden"
           style={{ backgroundImage: `url(${import.meta.env.BASE_URL}main.jpeg)` }}
         >

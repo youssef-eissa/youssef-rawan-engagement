@@ -6,7 +6,7 @@ function ImageSection() {
     const ref = useRef(null);
     const isInView = useInView(ref);
   return (
-    <section className="h-screen flex items-center justify-center" id="img">
+    <section className="h-dvh flex items-center justify-center" id="img">
       <div ref={ref} className="w-100 aspect-square rounded-2xl  relative ">
         <AnimatePresence>
           {isInView && (

@@ -16,7 +16,7 @@ function Hero() {
         }
     },[])
   return (
-    <section className=" h-screen flex items-center justify-center flex-col gap-10">
+    <section className=" h-dvh flex items-center justify-center flex-col gap-10">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -34,6 +34,7 @@ function Hero() {
       >
         Join Our Day
       </motion.div>
+      <CountdownTimer targetDate="2026-12-30T21:00:00" label="Counting down" />
       <AnimatePresence>
         {visible && (
           <motion.span
