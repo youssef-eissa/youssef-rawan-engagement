@@ -7,7 +7,7 @@ function ImageSection() {
     const isInView = useInView(ref);
   return (
     <section className="h-dvh flex items-center justify-center" id="img">
-      <div ref={ref} className="w-100 aspect-square rounded-2xl  relative ">
+      <div ref={ref} className="w-[90%] aspect-square rounded-2xl  relative ">
         {isInView && (
           <motion.div
             animate={{ opacity: 1 }}
