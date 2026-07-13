@@ -20,7 +20,7 @@ function ImageSection() {
               >
                 <img src={`${import.meta.env.BASE_URL}main.jpeg`} alt="img" className="w-full h-full" />
               </motion.div>
-              <span className="absolute -top-55 left-1/2 -translate-x-1/2 h-50 w-1 bg-yellow-300 z-50"></span>
+              <span className="absolute -top-28 left-1/2 -translate-x-1/2 h-25 rounded-2xl w-1 bg-yellow-200 z-50"></span>
             </>
           )}
         </AnimatePresence>

@@ -20,7 +20,7 @@ const [close,setClose]=useState(false)
             className=" relative z-10 [&>section]:z-50 [&>section]:relative overflow-hidden"
           >
             <div
-              className="fixed inset-0 -z-10 bg-center bg-cover"
+              className="fixed top-0 left-0 w-full h-dvh -z-10 bg-center bg-cover"
               style={{ backgroundImage: `url(${import.meta.env.BASE_URL}main.webp)` }}
             />
             <ParticlesBackground
