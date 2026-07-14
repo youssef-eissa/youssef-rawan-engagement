@@ -1,15 +1,27 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import Intro from "./components/Intro"
 import ParticlesBackground from "./components/lightswind/particles-background";
 import Hero from "./components/Hero";
 import {motion,AnimatePresence} from 'motion/react'
 import ImageSection from "./components/ImageSection";
 import MusicPlayer from "./components/Audio";
+import Location from "./components/Location";
+import DressCode from "./components/DressCode";
+import Message from "./components/Message";
 
 
 function App() {
 const [close,setClose]=useState(false)
 const musicRef = useRef(null)
+useEffect(()=>{
+  const interval=setTimeout(() => {
+  musicRef.current?.play();
+  console.log('play')
+    
+  }, 2000);
+
+return ()=>clearInterval(interval)
+},[])
   return (
     <>
       <Intro
@@ -23,7 +35,7 @@ const musicRef = useRef(null)
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2 }}
-            className=" relative z-10 [&>section]:z-50 [&>section]:relative overflow-hidden"
+            className=" relative z-10 [&>section]:z-50 [&>section]:relative overflow-hidden space-y-40 pb-10"
           >
             <div
               className="fixed top-0 left-0 w-full h-dvh -z-10 bg-center bg-cover"
@@ -44,13 +56,13 @@ const musicRef = useRef(null)
             <div className="absolute inset-0  bg-black/40 backdrop-blur-[1.5px] w-full h-full"></div>
             <Hero />
             <ImageSection />
-            <MusicPlayer
-              ref={musicRef}
-              src={`${import.meta.env.BASE_URL}main.mp3`}
-            />
+            <Location />
+            <DressCode />
+            {/* <Message/> */}
           </motion.div>
         )}
       </AnimatePresence>
+      <MusicPlayer ref={musicRef} src={`${import.meta.env.BASE_URL}main.mp3`} />
     </>
   );
 }

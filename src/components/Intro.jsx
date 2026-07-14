@@ -1,8 +1,9 @@
 import { motion, AnimatePresence } from "motion/react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { BsFillEnvelopeOpenHeartFill } from "react-icons/bs";
 
 function Intro({ close, setClose, onOpen }) {
+  const buttonRef=useRef(null)
   const closeIntro = useCallback(() => {
     onOpen?.();
     setClose(true);
@@ -16,6 +17,24 @@ function Intro({ close, setClose, onOpen }) {
 
     }
   },[close])
+
+  useEffect(() => {
+    const timer=setTimeout(() => {
+      if(buttonRef.current){
+        buttonRef.current.click()
+      }
+    }, 1000);
+    return ()=>clearInterval(timer)
+  }, [onOpen]);
+
+  function handleLCick(){
+    console.log('clicked')
+    onOpen?.();
+
+  }
+
+  useEffect(()=>{
+  },[])
   return (
     <AnimatePresence
       onExitComplete={() => {
@@ -25,10 +44,15 @@ function Intro({ close, setClose, onOpen }) {
       {!close && (
         <motion.div
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          exit={{ y: "-100%" ,opacity:0}}
+          exit={{ y: "-100%", opacity: 0 }}
           className="absolute top-0 left-0 z-50 h-dvh w-screen flex items-center justify-between py-10 bg-center bg-cover flex-col gap-10 overflow-hidden"
-          style={{ backgroundImage: `url(${import.meta.env.BASE_URL}main.jpeg)` }}
+          style={{
+            backgroundImage: `url(${import.meta.env.BASE_URL}main.jpeg)`,
+          }}
         >
+          <button onClick={handleLCick} ref={buttonRef} className="absolute">
+            
+          </button>
           <div className="absolute inset-0 h-full w-full bg-black/50 -z-10"></div>
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -55,7 +79,7 @@ function Intro({ close, setClose, onOpen }) {
             onClick={closeIntro}
           >
             Open Invitaion
-            <BsFillEnvelopeOpenHeartFill/>
+            <BsFillEnvelopeOpenHeartFill />
           </motion.button>
         </motion.div>
       )}

@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "re
 import { FaMusic } from "react-icons/fa6";
 import {motion,AnimatePresence} from 'motion/react'
 import { Slider } from "@/components/ui/slider";
+import ReactAudioPlayer from "react-audio-player";
 
 const MusicPlayer = forwardRef(function MusicPlayer({ src }, ref) {
   const [isMuted, setIsMuted] = useState(false);
@@ -73,7 +74,14 @@ useEffect(()=>{
 
   return (
     <>
-      <audio ref={audioRef} src={src} loop autoPlay muted={isMuted} />
+      <audio
+
+        ref={audioRef}
+        src={src}
+        loop
+        autoPlay
+        muted={isMuted}
+      />
       <motion.div
         ref={containerRef}
         onClick={() => setExtend((p) => !p)}
