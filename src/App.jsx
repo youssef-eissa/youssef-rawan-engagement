@@ -16,7 +16,6 @@ const musicRef = useRef(null)
 useEffect(()=>{
   const interval=setTimeout(() => {
   musicRef.current?.play();
-  console.log('play')
     
   }, 2000);
 
@@ -58,7 +57,7 @@ return ()=>clearInterval(interval)
             <ImageSection />
             <Location />
             <DressCode />
-            {/* <Message/> */}
+            <Message/>
           </motion.div>
         )}
       </AnimatePresence>

@@ -28,7 +28,6 @@ function Intro({ close, setClose, onOpen }) {
   }, [onOpen]);
 
   function handleLCick(){
-    console.log('clicked')
     onOpen?.();
 
   }
