@@ -2,10 +2,11 @@ import { motion, AnimatePresence } from "motion/react";
 import { useCallback, useEffect } from "react";
 import { BsFillEnvelopeOpenHeartFill } from "react-icons/bs";
 
-function Intro({ close, setClose }) {
+function Intro({ close, setClose, onOpen }) {
   const closeIntro = useCallback(() => {
+    onOpen?.();
     setClose(true);
-  }, [setClose]);
+  }, [setClose, onOpen]);
   useEffect(()=>{
     if(!close){
         document.documentElement.style.overflow="hidden"
