@@ -8,7 +8,7 @@ function ImageSection() {
     const isInView = useInView(ref);
   return (
     <section className="h-dv flex items-center justify-center" id="img">
-      <div ref={ref} className="w-[90%] aspect-square rounded-2xl  relative ">
+      <div ref={ref} className="w-[90%]  sm:w-125 aspect-square rounded-2xl  relative ">
         <Skew isInView={isInView} />
 
         <AnimatePresence>
@@ -19,7 +19,7 @@ function ImageSection() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -10, opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                className="w-full h-fill rounded-2xl overflow-hidden relative"
+                className="w-full h-full rounded-2xl overflow-hidden relative"
               >
                 <img
                   src={`${import.meta.env.BASE_URL}main.jpeg`}
