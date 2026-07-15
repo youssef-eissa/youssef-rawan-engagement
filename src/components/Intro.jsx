@@ -18,22 +18,13 @@ function Intro({ close, setClose, onOpen }) {
     }
   },[close])
 
-  useEffect(() => {
-    const timer=setTimeout(() => {
-      if(buttonRef.current){
-        buttonRef.current.click()
-      }
-    }, 1000);
-    return ()=>clearInterval(timer)
+
+
+  const handleLCick = useCallback(() => {
+    onOpen?.();
   }, [onOpen]);
 
-  function handleLCick(){
-    onOpen?.();
-
-  }
-
-  useEffect(()=>{
-  },[])
+ 
   return (
     <AnimatePresence
       onExitComplete={() => {

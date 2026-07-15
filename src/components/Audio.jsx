@@ -2,15 +2,14 @@ import { useState, useRef, useEffect, forwardRef, useImperativeHandle } from "re
 import { FaMusic } from "react-icons/fa6";
 import {motion,AnimatePresence} from 'motion/react'
 import { Slider } from "@/components/ui/slider";
-import ReactAudioPlayer from "react-audio-player";
 
-const MusicPlayer = forwardRef(function MusicPlayer({ src }, ref) {
+const MusicPlayer = forwardRef(function MusicPlayer({ src, isPlay,setIsPlay }, ref) {
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(1);
   const audioRef = useRef(null);
-  const [extend, setExtend] = useState(false)
-  const [sliderVisible, setSliderVisible] = useState(false)
-const containerRef=useRef(null)
+  const [extend, setExtend] = useState(false);
+  const [sliderVisible, setSliderVisible] = useState(false);
+  const containerRef = useRef(null);
   useImperativeHandle(ref, () => ({
     play: () => {
       setIsMuted(false);
@@ -19,16 +18,16 @@ const containerRef=useRef(null)
     },
   }));
 
-useEffect(()=>{
-  function handleClose(e){
-    if(containerRef.current && !containerRef.current.contains(e.target)){
-      setExtend(false)
+  useEffect(() => {
+    function handleClose(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        setExtend(false);
+      }
     }
-  }
-  document.addEventListener('click',handleClose)
+    document.addEventListener("click", handleClose);
 
-  return ()=>document.removeEventListener('click',handleClose)
-},[])
+    return () => document.removeEventListener("click", handleClose);
+  }, []);
   useEffect(() => {
     audioRef.current.play().catch(() => {});
   }, []);
@@ -40,8 +39,12 @@ useEffect(()=>{
       audioRef.current.muted = false;
       audioRef.current.play().catch(() => {});
     };
-    document.addEventListener("pointerdown", unmuteOnFirstInteraction, { once: true });
-    document.addEventListener("keydown", unmuteOnFirstInteraction, { once: true });
+    document.addEventListener("pointerdown", unmuteOnFirstInteraction, {
+      once: true,
+    });
+    document.addEventListener("keydown", unmuteOnFirstInteraction, {
+      once: true,
+    });
     return () => {
       document.removeEventListener("pointerdown", unmuteOnFirstInteraction);
       document.removeEventListener("keydown", unmuteOnFirstInteraction);
@@ -61,8 +64,6 @@ useEffect(()=>{
     if (!next) audioRef.current.play().catch(() => {});
   };
 
-  
-
   const applyVolume = (next) => {
     setVolume(next);
     if (next > 0 && isMuted) {
@@ -71,20 +72,19 @@ useEffect(()=>{
       audioRef.current.play().catch(() => {});
     }
   };
-
   return (
     <>
-      <audio
-
-        ref={audioRef}
-        src={src}
-        loop
-        autoPlay
-        muted={isMuted}
-      />
+      <audio ref={audioRef} src={src} loop autoPlay muted={isMuted} />
       <motion.div
         ref={containerRef}
-        onClick={() => setExtend((p) => !p)}
+        onClick={() => {
+          setExtend((p) => !p);
+          if(isPlay) return;
+          setIsPlay(true)
+      audioRef.current.play().catch(() => {});
+
+
+        }}
         role="button"
         animate={{ height: extend ? 200 : 52 }}
         transition={{ duration: 0.5 }}

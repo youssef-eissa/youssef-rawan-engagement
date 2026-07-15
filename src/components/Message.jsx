@@ -2,7 +2,6 @@ import { motion, AnimatePresence, useInView } from "motion/react";
 import { useRef, useState } from "react";
 import Skew from "./Skew";
 import { GiDoorRingHandle } from "react-icons/gi";
-import { GiClothes } from "react-icons/gi";
 
 
 

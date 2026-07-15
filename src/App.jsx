@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef,  } from "react"
 import Intro from "./components/Intro"
 import ParticlesBackground from "./components/lightswind/particles-background";
 import Hero from "./components/Hero";
@@ -13,20 +13,17 @@ import Message from "./components/Message";
 function App() {
 const [close,setClose]=useState(false)
 const musicRef = useRef(null)
-useEffect(()=>{
-  const interval=setTimeout(() => {
-  musicRef.current?.play();
-    
-  }, 2000);
+const [isPlay,setIsPlay]=useState(false)
 
-return ()=>clearInterval(interval)
-},[])
   return (
     <>
       <Intro
         close={close}
         setClose={setClose}
-        onOpen={() => musicRef.current?.play()}
+        onOpen={() => {
+          musicRef.current?.play();
+          setIsPlay(true);
+        }}
       />
       <AnimatePresence>
         {close && (
@@ -57,11 +54,16 @@ return ()=>clearInterval(interval)
             <ImageSection />
             <Location />
             <DressCode />
-            <Message/>
+            <Message />
           </motion.div>
         )}
       </AnimatePresence>
-      <MusicPlayer ref={musicRef} src={`${import.meta.env.BASE_URL}main.mp3`} />
+      <MusicPlayer
+        isPlay={isPlay}
+        ref={musicRef}
+        setIsPlay={setIsPlay}
+        src={`${import.meta.env.BASE_URL}main1.mp3`}
+      />
     </>
   );
 }
