@@ -8,7 +8,7 @@ function ImageSection() {
     const isInView = useInView(ref);
   return (
     <section className="h-dv flex items-center justify-center" id="img">
-      <div ref={ref} className="w-[90%]  sm:w-125 aspect-square rounded-2xl  relative ">
+      <div ref={ref} className="w-[90%]  sm:w-125  rounded-2xl  relative ">
         <Skew isInView={isInView} />
 
         <AnimatePresence>
